@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
     include JsonWebToken
+    include RenderHelper
+
     def not_found
         render json: { error: 'not_found' }
       end

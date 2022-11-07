@@ -3,34 +3,33 @@ class UserController < ApplicationController
 
     def index
         user = User.all
-        render json: user
+        render_json_success(user)
     end
-    
     
     def create
         user= User.new(user_params)
         if user.save
-            render json: {message: "USER CREATED SUCCESSFULLY!", user: user}
+            render_json_success(user)
         else
-            render json: {message: "failure"}
+            render_json_validation_error(user)
         end
     end
 
     def update
         user = User.find(params[:id])
         if user.update(user_params)
-            render json: {message: "USER UPDATED SUCCESSFULLY!", user: user}
+            render_json_success(user)
         else
-            render json: {message: "failure"}
+            render_json_validation_error(user)
         end
     end
 
     def destroy
         user = User.find(params[:id])
         if user.destroy
-            render json: {message: "USER DESTROYED SUCCESSFULLY!", user: user}
+            render_json_validation_error(user)
         else
-            render json: {message: "failure"}
+            render_json_validation_error(user)
         end
     end
 
@@ -39,4 +38,7 @@ class UserController < ApplicationController
     def user_params
         params.permit(:email, :password, :image)
     end
+
+    rescue ActiveRecord::RecordNotFound
+        render json: { error: error.message }, status: :not_found
 end

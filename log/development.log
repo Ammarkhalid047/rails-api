@@ -1084,3 +1084,1206 @@ Processing by AuthenticationController#login as */*
 Completed 200 OK in 240ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 7191)
 
 
+Started GET "/user" for ::1 at 2022-11-07 15:38:54 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+Completed 200 OK in 12ms (Views: 1.8ms | ActiveRecord: 3.8ms | Allocations: 4872)
+
+
+Started GET "/user" for ::1 at 2022-11-07 15:43:55 +0500
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/controllers/application_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/application_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/application_controller.rb:21: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:1:in `<main>'
+Started GET "/user" for ::1 at 2022-11-07 15:44:16 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+Completed 200 OK in 21ms (Views: 4.1ms | ActiveRecord: 4.0ms | Allocations: 5340)
+
+
+Started GET "/user" for ::1 at 2022-11-07 15:44:28 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+Completed 200 OK in 281749ms (Views: 1.6ms | ActiveRecord: 2.8ms | Allocations: 67852)
+
+
+Started POST "/user?email=ak.mughal09@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 15:50:01 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f999c19ff40 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-72368-ir4jou.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"ak.mughal09@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal09@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "ak.mughal09@gmail.com"], ["password_digest", "$2a$12$BInb9LbFk1pzdDU3uHkw1e1ePwSp3X8kS3EbLMYv2HXt75KSuWIeW"], ["created_at", "2022-11-07 10:50:01.357696"], ["updated_at", "2022-11-07 10:50:01.357696"]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "qs8n5owa32qn0anq9jqaqp5gchs8"], ["filename", "photo-1541363111435-5c1b7d867904.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 104908], ["checksum", "TIF65JBzN+IFRNniAU79yA=="], ["created_at", "2022-11-07 10:50:01.376526"]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "User"], ["record_id", 12], ["blob_id", 10], ["created_at", "2022-11-07 10:50:01.378312"]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2022-11-07 10:50:01.379998"], ["id", 12]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+[36m  Disk Storage (0.5ms) [0m[32mUploaded file to key: qs8n5owa32qn0anq9jqaqp5gchs8 (checksum: TIF65JBzN+IFRNniAU79yA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: a4f7025b-7cf8-4d51-8b09-acfe19002a06) to Async(default) with arguments: #<GlobalID:0x00007f999c94edb8 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/10>>
+Completed 200 OK in 273ms (Views: 0.2ms | ActiveRecord: 13.5ms | Allocations: 27469)
+
+
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4f7025b-7cf8-4d51-8b09-acfe19002a06] Performing ActiveStorage::AnalyzeJob (Job ID: a4f7025b-7cf8-4d51-8b09-acfe19002a06) from Async(default) enqueued at 2022-11-07T10:50:01Z with arguments: #<GlobalID:0x00007f99641b0cd8 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/10>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4f7025b-7cf8-4d51-8b09-acfe19002a06] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: qs8n5owa32qn0anq9jqaqp5gchs8[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4f7025b-7cf8-4d51-8b09-acfe19002a06] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4f7025b-7cf8-4d51-8b09-acfe19002a06]   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4f7025b-7cf8-4d51-8b09-acfe19002a06]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 10]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4f7025b-7cf8-4d51-8b09-acfe19002a06]   [1m[36mTRANSACTION (12.8ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [a4f7025b-7cf8-4d51-8b09-acfe19002a06] Performed ActiveStorage::AnalyzeJob (Job ID: a4f7025b-7cf8-4d51-8b09-acfe19002a06) from Async(default) in 25.1ms
+Started POST "/auth/login" for ::1 at 2022-11-07 15:50:29 +0500
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"ak.mughal09@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal09@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:5:in `login'
+Completed 200 OK in 239ms (Views: 0.3ms | ActiveRecord: 3.0ms | Allocations: 3883)
+
+
+Started GET "/user" for ::1 at 2022-11-07 15:51:14 +0500
+Processing by UserController#index as */*
+Completed 500 Internal Server Error in 24121ms (ActiveRecord: 0.0ms | Allocations: 9136)
+
+
+  
+Errno::EIO (Input/output error - read):
+  
+app/controllers/application_controller.rb:10:in `authorize_request'
+Started GET "/user" for ::1 at 2022-11-07 15:51:45 +0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `authorize_request'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+Completed 200 OK in 41467ms (Views: 3.9ms | ActiveRecord: 4.1ms | Allocations: 47122)
+
+
+Started POST "/user?email=ak.mughal10@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 16:03:06 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f5020130778 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-74112-kn5fpl.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"ak.mughal10@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "ak.mughal10@gmail.com"], ["password_digest", "$2a$12$i68Iqo3Dk7giI1FAoygMjuAHomRs8e0saLVwLGXiZTYv3kzpaO0X6"], ["created_at", "2022-11-07 11:03:07.139440"], ["updated_at", "2022-11-07 11:03:07.139440"]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 13], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 13], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "xkwej8z4b6kpixlgg0nllzzk9nnn"], ["filename", "photo-1541363111435-5c1b7d867904.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 104908], ["checksum", "TIF65JBzN+IFRNniAU79yA=="], ["created_at", "2022-11-07 11:03:07.156927"]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "User"], ["record_id", 13], ["blob_id", 11], ["created_at", "2022-11-07 11:03:07.158619"]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2022-11-07 11:03:07.160110"], ["id", 13]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+[36m  Disk Storage (0.6ms) [0m[32mUploaded file to key: xkwej8z4b6kpixlgg0nllzzk9nnn (checksum: TIF65JBzN+IFRNniAU79yA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: ad6272af-1324-448b-ade6-5cf10764a728) to Async(default) with arguments: #<GlobalID:0x00007f5020516a18 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/11>>
+Completed 200 OK in 276ms (Views: 0.3ms | ActiveRecord: 16.4ms | Allocations: 30044)
+
+
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ad6272af-1324-448b-ade6-5cf10764a728] Performing ActiveStorage::AnalyzeJob (Job ID: ad6272af-1324-448b-ade6-5cf10764a728) from Async(default) enqueued at 2022-11-07T11:03:07Z with arguments: #<GlobalID:0x000055632ecae540 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/11>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ad6272af-1324-448b-ade6-5cf10764a728] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: xkwej8z4b6kpixlgg0nllzzk9nnn[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ad6272af-1324-448b-ade6-5cf10764a728] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ad6272af-1324-448b-ade6-5cf10764a728]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ad6272af-1324-448b-ade6-5cf10764a728]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 11]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ad6272af-1324-448b-ade6-5cf10764a728]   [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ad6272af-1324-448b-ade6-5cf10764a728] Performed ActiveStorage::AnalyzeJob (Job ID: ad6272af-1324-448b-ade6-5cf10764a728) from Async(default) in 11.01ms
+Started GET "/auth/login" for ::1 at 2022-11-07 16:03:32 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/auth/login"):
+  
+Started POST "/auth/login" for ::1 at 2022-11-07 16:03:37 +0500
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"ak.mughal10@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:5:in `login'
+Completed 200 OK in 234ms (Views: 0.2ms | ActiveRecord: 3.7ms | Allocations: 3884)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:04:02 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 2306)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:05:25 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.5ms | Allocations: 2176)
+
+
+Started POST "/auth/login" for ::1 at 2022-11-07 16:06:33 +0500
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:5:in `login'
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 536)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:06:47 +0500
+Processing by UserController#index as */*
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 188)
+
+
+Started POST "/auth/login" for ::1 at 2022-11-07 16:09:41 +0500
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"ak.mughal10@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:5:in `login'
+Completed 200 OK in 254ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 3879)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:09:59 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 0.5ms | Allocations: 2305)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:13:30 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 2.3ms | Allocations: 5512)
+
+
+  
+NameError (uninitialized constant UserController::UserSerializer):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 16:15:27 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 2.2ms | Allocations: 5457)
+
+
+  
+NameError (uninitialized constant UserController::UserSerializer):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 16:17:32 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 2278)
+
+
+  
+NameError (uninitialized constant UserController::UserSerializer):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 16:17:33 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 2279)
+
+
+  
+NameError (uninitialized constant UserController::UserSerializer):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 16:17:34 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.2ms | Allocations: 2278)
+
+
+  
+NameError (uninitialized constant UserController::UserSerializer):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 16:18:59 +0500
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.71ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 3.2ms | Allocations: 12842)
+
+
+  
+NoMethodError (undefined method `name' for #<User:0x00007f8eb44410c0>):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 16:19:17 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 13], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (56.72ms)
+Completed 200 OK in 67ms (Views: 49.8ms | ActiveRecord: 10.7ms | Allocations: 41709)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:20:39 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.87ms)
+Completed 200 OK in 12ms (Views: 2.0ms | ActiveRecord: 2.8ms | Allocations: 5596)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:21:35 +0500
+Processing by UserController#index as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms | Allocations: 1395)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:21:40 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.87ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.5ms | Allocations: 2225)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:29:46 +0500
+  
+NameError (uninitialized constant ApplicationController::ApiExceptions):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<main>'
+app/controllers/user_controller.rb:1:in `<main>'
+Started POST "/user?email=ak.mughal11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 16:34:59 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f8eb837dc70 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-75550-1chmmwt.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"ak.mughal11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "ak.mughal11@gmail.com"], ["password_digest", "$2a$12$LxfyT8P8VPtiZuDkEf3ZFOVrVxkAFgvtrFYCzuggbiN8sLBDKg02i"], ["created_at", "2022-11-07 11:34:59.351995"], ["updated_at", "2022-11-07 11:34:59.351995"]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 14], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 14], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "grru5nxngxg30wwu07rz9gtj3mvq"], ["filename", "photo-1541363111435-5c1b7d867904.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 104908], ["checksum", "TIF65JBzN+IFRNniAU79yA=="], ["created_at", "2022-11-07 11:34:59.369174"]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "User"], ["record_id", 14], ["blob_id", 12], ["created_at", "2022-11-07 11:34:59.370991"]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2022-11-07 11:34:59.372625"], ["id", 14]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+[36m  Disk Storage (0.7ms) [0m[32mUploaded file to key: grru5nxngxg30wwu07rz9gtj3mvq (checksum: TIF65JBzN+IFRNniAU79yA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: ed41e6df-a6b7-47db-875e-930afd1d3832) to Async(default) with arguments: #<GlobalID:0x00007f8eb44f1650 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/12>>
+Completed 500 Internal Server Error in 314ms (ActiveRecord: 16.8ms | Allocations: 27769)
+
+
+  
+NoMethodError (undefined method `json_response' for #<UserController:0x0000000000b540>):
+  
+app/controllers/user_controller.rb:13:in `create'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ed41e6df-a6b7-47db-875e-930afd1d3832] Performing ActiveStorage::AnalyzeJob (Job ID: ed41e6df-a6b7-47db-875e-930afd1d3832) from Async(default) enqueued at 2022-11-07T11:34:59Z with arguments: #<GlobalID:0x000055db280873f8 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/12>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ed41e6df-a6b7-47db-875e-930afd1d3832] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: grru5nxngxg30wwu07rz9gtj3mvq[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ed41e6df-a6b7-47db-875e-930afd1d3832] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ed41e6df-a6b7-47db-875e-930afd1d3832]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ed41e6df-a6b7-47db-875e-930afd1d3832]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 12]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ed41e6df-a6b7-47db-875e-930afd1d3832]   [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [ed41e6df-a6b7-47db-875e-930afd1d3832] Performed ActiveStorage::AnalyzeJob (Job ID: ed41e6df-a6b7-47db-875e-930afd1d3832) from Async(default) in 15.66ms
+Started POST "/user?email=ak.mughal11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 16:35:42 +0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x000055b957759980 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-m80u1h.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"ak.mughal11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+Completed 500 Internal Server Error in 311ms (ActiveRecord: 6.3ms | Allocations: 19922)
+
+
+  
+NoMethodError (undefined method `json_response' for #<UserController:0x00000000007260>):
+  
+app/controllers/user_controller.rb:13:in `create'
+Started POST "/user?email=ak.mughal11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 16:36:52 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f139c0e57e8 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1s4vw1d.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"ak.mughal11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 300ms (Views: 1.2ms | ActiveRecord: 5.8ms | Allocations: 12378)
+
+
+Started POST "/user?email=ak.mughal11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 16:45:18 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f13981369d0 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-kywj81.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"ak.mughal11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:12:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 305ms (Views: 0.7ms | ActiveRecord: 8.1ms | Allocations: 14226)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:45:29 +0500
+Processing by UserController#index as */*
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 326)
+
+
+Started POST "/auth/login" for ::1 at 2022-11-07 16:45:34 +0500
+Processing by AuthenticationController#login as */*
+  Parameters: {"email"=>"ak.mughal10@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ak.mughal10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 257ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 1012)
+
+
+Started GET "/user" for ::1 at 2022-11-07 16:45:46 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 790)
+
+
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/serializers/user_serializer.rb:4: syntax error, unexpected ':', expecting `end'
+      status: status
+            ^
+):
+  
+app/serializers/user_serializer.rb:4: syntax error, unexpected ':', expecting `end'
+app/serializers/user_serializer.rb:4: syntax error, unexpected ':', expecting `end'
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 16:46:53 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 4.1ms | Allocations: 3897)
+
+
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/serializers/user_serializer.rb:4: syntax error, unexpected ':', expecting `end'
+      status: '200'
+            ^
+/home/ammarkhalid/rails-apis/first-api-1/app/serializers/user_serializer.rb:5: syntax error, unexpected ':', expecting `end'
+      message: 'User created successfully'
+             ^
+):
+  
+app/serializers/user_serializer.rb:4: syntax error, unexpected ':', expecting `end'
+app/serializers/user_serializer.rb:5: syntax error, unexpected ':', expecting `end'
+app/serializers/user_serializer.rb:4: syntax error, unexpected ':', expecting `end'
+app/serializers/user_serializer.rb:5: syntax error, unexpected ':', expecting `end'
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 16:47:11 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 2.4ms | Allocations: 3880)
+
+
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/serializers/user_serializer.rb:4: syntax error, unexpected ':', expecting `end'
+      status: '200',
+            ^
+/home/ammarkhalid/rails-apis/first-api-1/app/serializers/user_serializer.rb:4: syntax error, unexpected ',', expecting `end'
+      status: '200',
+                   ^
+):
+  
+app/serializers/user_serializer.rb:4: syntax error, unexpected ':', expecting `end'
+app/serializers/user_serializer.rb:4: syntax error, unexpected ',', expecting `end'
+app/serializers/user_serializer.rb:4: syntax error, unexpected ':', expecting `end'
+app/serializers/user_serializer.rb:4: syntax error, unexpected ',', expecting `end'
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 16:47:34 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:12:in `authorize_request'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.32ms)
+Completed 200 OK in 14ms (Views: 3.7ms | ActiveRecord: 2.7ms | Allocations: 6950)
+
+
+Started GET "/user" for ::1 at 2022-11-07 17:00:23 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.55ms)
+Completed 200 OK in 28ms (Views: 4.8ms | ActiveRecord: 6.7ms | Allocations: 8543)
+
+
+Started POST "/user?email=test@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:00:39 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f13b4090028 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-19oc7ys.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@gmail.com"], ["password_digest", "$2a$12$BbiOxz8XseDDX9ku58r1UOwif4YLx/6AuCeqtmrGpJ57YfmCYCyUO"], ["created_at", "2022-11-07 12:00:40.199630"], ["updated_at", "2022-11-07 12:00:40.199630"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 15], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 15], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "w5oi6ebg17bgw6dvpm9mfx4rc8j4"], ["filename", "photo-1541363111435-5c1b7d867904.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 104908], ["checksum", "TIF65JBzN+IFRNniAU79yA=="], ["created_at", "2022-11-07 12:00:40.218467"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "User"], ["record_id", 15], ["blob_id", 13], ["created_at", "2022-11-07 12:00:40.220558"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2022-11-07 12:00:40.222345"], ["id", 15]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[36m  Disk Storage (0.6ms) [0m[32mUploaded file to key: w5oi6ebg17bgw6dvpm9mfx4rc8j4 (checksum: TIF65JBzN+IFRNniAU79yA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa) to Async(default) with arguments: #<GlobalID:0x00007f139824e598 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/13>>
+Completed 500 Internal Server Error in 321ms (ActiveRecord: 13.9ms | Allocations: 23871)
+
+
+  
+NameError (undefined local variable or method `product' for #<UserController:0x0000000000dae8>
+Did you mean?  proc):
+  
+app/controllers/user_controller.rb:12:in `create'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa] Performing ActiveStorage::AnalyzeJob (Job ID: e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa) from Async(default) enqueued at 2022-11-07T12:00:40Z with arguments: #<GlobalID:0x00007f139804a2d8 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/13>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: w5oi6ebg17bgw6dvpm9mfx4rc8j4[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 13]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa]   [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa] Performed ActiveStorage::AnalyzeJob (Job ID: e9ea0dfb-6cef-4ca3-bfec-a6f3120665aa) from Async(default) in 13.77ms
+Started POST "/user?email=test@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:00:51 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f139425be40 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1yoxzzj.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (1.63ms)
+Completed 400 Bad Request in 289ms (Views: 3.9ms | ActiveRecord: 5.9ms | Allocations: 13976)
+
+
+Started GET "/data/attributes/email" for ::1 at 2022-11-07 17:01:02 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/data/attributes/email"):
+  
+Started POST "/user" for ::1 at 2022-11-07 17:01:13 +0500
+Processing by UserController#create as */*
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (1.51ms)
+Completed 400 Bad Request in 7ms (Views: 1.9ms | ActiveRecord: 0.6ms | Allocations: 2828)
+
+
+Started POST "/user?email=ammar.khalid047@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:01:48 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid047@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid047@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "ammar.khalid047@gmail.com"], ["password_digest", "$2a$12$Ls.C8e5EspGpkHNYflJgV.aiQUxP2kcRFlVDAjyykWhVO3MZjiFlC"], ["created_at", "2022-11-07 12:01:48.274886"], ["updated_at", "2022-11-07 12:01:48.274886"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 201 Created in 230ms (Views: 4.0ms | ActiveRecord: 5.2ms | Allocations: 3843)
+
+
+Started POST "/user?email=ammar.khalid047@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:02:28 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid047@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid047@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.36ms)
+Completed 400 Bad Request in 225ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 2310)
+
+
+Started POST "/user?email=ammar.khalid047@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:03:06 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid047@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid047@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::Attributes (0.53ms)
+Completed 400 Bad Request in 288ms (Views: 1.0ms | ActiveRecord: 3.4ms | Allocations: 5349)
+
+
+Started POST "/user?email=ammar.khalid047@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:03:16 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid047@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid047@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (1.06ms)
+Completed 200 OK in 242ms (Views: 1.5ms | ActiveRecord: 2.8ms | Allocations: 5531)
+
+
+Started POST "/user?email=ammar.khalid047@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:03:25 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid047@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid047@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.47ms)
+Completed 400 Bad Request in 228ms (Views: 0.7ms | ActiveRecord: 2.9ms | Allocations: 5528)
+
+
+Started POST "/user?email=ammar.khalid048@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:04:31 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid048@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid048@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "ammar.khalid048@gmail.com"], ["password_digest", "$2a$12$f2q7CYiASPB5P97DsHL.ceZz6QobrZW.omS.dJpvWyHpReXpzXpci"], ["created_at", "2022-11-07 12:04:31.568177"], ["updated_at", "2022-11-07 12:04:31.568177"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 201 Created in 235ms (Views: 1.4ms | ActiveRecord: 7.5ms | Allocations: 6223)
+
+
+Started POST "/user?email=ammar.khalid048@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:04:58 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid048@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid048@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (1.34ms)
+Completed 400 Bad Request in 228ms (Views: 1.7ms | ActiveRecord: 3.0ms | Allocations: 6483)
+
+
+Started POST "/user?email=ammar.khalid049@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:05:04 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid049@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid049@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "ammar.khalid049@gmail.com"], ["password_digest", "$2a$12$vLIMvxSkEKXYnEtN3zvk9OeoB.ODSoAdbJv2Jymyj3MLYyj2IDaGm"], ["created_at", "2022-11-07 12:05:05.059905"], ["updated_at", "2022-11-07 12:05:05.059905"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+Completed 500 Internal Server Error in 230ms (ActiveRecord: 5.2ms | Allocations: 3871)
+
+
+  
+TypeError ({:status=>:created} is not a symbol nor a string):
+  
+app/controllers/user_controller.rb:12:in `create'
+Started POST "/user?email=ammar.khalid049@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:05:29 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid049@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid049@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.48ms)
+Completed 400 Bad Request in 228ms (Views: 0.8ms | ActiveRecord: 2.8ms | Allocations: 5529)
+
+
+Started POST "/user?email=ammar.khalid050@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:05:37 +0500
+Processing by UserController#create as */*
+  Parameters: {"email"=>"ammar.khalid050@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ammar.khalid050@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "ammar.khalid050@gmail.com"], ["password_digest", "$2a$12$yDn1qW2e08RWT5itXvgMa.elGgSDrimuxGhCof3Xf90qtp2wDi0a6"], ["created_at", "2022-11-07 12:05:37.626733"], ["updated_at", "2022-11-07 12:05:37.626733"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 201 Created in 228ms (Views: 4.2ms | ActiveRecord: 5.0ms | Allocations: 3787)
+
+
+Started GET "/user" for ::1 at 2022-11-07 17:05:52 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.72ms)
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.5ms | Allocations: 2481)
+
+
+Started GET "/user" for ::1 at 2022-11-07 17:06:09 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.13ms)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 2.6ms | Allocations: 8200)
+
+
+  
+NoMethodError (undefined method `message' for #<User:0x00007f138c17c6d0>):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 17:06:16 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.86ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 5.4ms | Allocations: 8208)
+
+
+  
+NoMethodError (undefined method `status' for #<User:0x00007f139c279118>):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 17:06:22 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `authorize_request'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 2.9ms | Allocations: 3859)
+
+
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/serializers/user_serializer.rb:3: syntax error, unexpected `end'):
+  
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/serializers/user_serializer.rb:3: syntax error, unexpected `end'
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 17:06:32 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 4.9ms | Allocations: 5328)
+
+
+  
+TypeError ({:status=>:success} is not a symbol nor a string):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 17:06:47 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 4.8ms | Allocations: 5355)
+
+
+  
+TypeError ({:status=>"Api Hit successfull"} is not a symbol nor a string):
+  
+app/controllers/user_controller.rb:6:in `index'
+Started GET "/user" for ::1 at 2022-11-07 17:07:21 +0500
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:17:in `authorize_request'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.62ms)
+Completed 200 OK in 21ms (Views: 6.4ms | ActiveRecord: 2.7ms | Allocations: 6057)
+
+
+Started POST "/user?email=test@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:07:25 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f1394623a28 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1xkf9bc.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.41ms)
+Completed 400 Bad Request in 240ms (Views: 0.7ms | ActiveRecord: 4.4ms | Allocations: 9138)
+
+
+Started POST "/user?email=test@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:07:35 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x000055b9581157a8 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1lykt2d.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.35ms)
+Completed 400 Bad Request in 220ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 2423)
+
+
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:07:41 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x000055b9580714c8 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1minij4.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test11@gmail.com"], ["password_digest", "$2a$12$Sh29sM79fL4EG24wHqs7RO9BnT1dqwdfhWmLeBo2mWg7PQ3RcV0DW"], ["created_at", "2022-11-07 12:07:41.866363"], ["updated_at", "2022-11-07 12:07:41.866363"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 20], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 20], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "l327jtwghpx1ryefglgczqosyonq"], ["filename", "photo-1541363111435-5c1b7d867904.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 104908], ["checksum", "TIF65JBzN+IFRNniAU79yA=="], ["created_at", "2022-11-07 12:07:41.880685"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "User"], ["record_id", 20], ["blob_id", 14], ["created_at", "2022-11-07 12:07:41.883068"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2022-11-07 12:07:41.885723"], ["id", 20]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[36m  Disk Storage (0.5ms) [0m[32mUploaded file to key: l327jtwghpx1ryefglgczqosyonq (checksum: TIF65JBzN+IFRNniAU79yA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 8b2faa85-1379-46c0-8ef9-bf46a5987557) to Async(default) with arguments: #<GlobalID:0x000055b95770e7a0 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/14>>
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 201 Created in 261ms (Views: 0.8ms | ActiveRecord: 8.7ms | Allocations: 12255)
+
+
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b2faa85-1379-46c0-8ef9-bf46a5987557] Performing ActiveStorage::AnalyzeJob (Job ID: 8b2faa85-1379-46c0-8ef9-bf46a5987557) from Async(default) enqueued at 2022-11-07T12:07:41Z with arguments: #<GlobalID:0x00007f138c19ae78 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/14>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b2faa85-1379-46c0-8ef9-bf46a5987557] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: l327jtwghpx1ryefglgczqosyonq[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b2faa85-1379-46c0-8ef9-bf46a5987557] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b2faa85-1379-46c0-8ef9-bf46a5987557]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b2faa85-1379-46c0-8ef9-bf46a5987557]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 14]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b2faa85-1379-46c0-8ef9-bf46a5987557]   [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b2faa85-1379-46c0-8ef9-bf46a5987557] Performed ActiveStorage::AnalyzeJob (Job ID: 8b2faa85-1379-46c0-8ef9-bf46a5987557) from Async(default) in 10.47ms
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:08:50 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f138c0f57e8 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-6k9ojs.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.76ms)
+Completed 400 Bad Request in 223ms (Views: 1.0ms | ActiveRecord: 0.6ms | Allocations: 2804)
+
+
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:08:56 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f138c0bbe80 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1b8pxs6.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.53ms)
+Completed 400 Bad Request in 220ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 2544)
+
+
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:09:11 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f13b40f7408 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-8psbrr.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.36ms)
+Completed 400 Bad Request in 220ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 2422)
+
+
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:19:13 +0500
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:17: syntax error, unexpected tLABEL
+...           render json: status: :unprocessable_entity, messa...
+...                        ^~~~~~~
+/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:17: syntax error, unexpected ',', expecting `end'
+...ssage: 'Something went wrong' ,error: user.errors 
+...                              ^
+/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/user_controller.rb:17: syntax error, unexpected tLABEL
+app/controllers/user_controller.rb:17: syntax error, unexpected ',', expecting `end'
+app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input
+app/controllers/user_controller.rb:17: syntax error, unexpected tLABEL
+app/controllers/user_controller.rb:17: syntax error, unexpected ',', expecting `end'
+app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:19:54 +0500
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:17: syntax error, unexpected tLABEL
+...           render json: status: :unprocessable_entity, messa...
+...                        ^~~~~~~
+/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/user_controller.rb:17: syntax error, unexpected tLABEL
+app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input
+app/controllers/user_controller.rb:17: syntax error, unexpected tLABEL
+app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:20:12 +0500
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input
+app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:20:37 +0500
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:45: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/user_controller.rb:45: syntax error, unexpected `end', expecting end-of-input
+app/controllers/user_controller.rb:45: syntax error, unexpected `end', expecting end-of-input
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:20:38 +0500
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:45: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/user_controller.rb:45: syntax error, unexpected `end', expecting end-of-input
+app/controllers/user_controller.rb:45: syntax error, unexpected `end', expecting end-of-input
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:20:45 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x000055b957617bd0 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1hapiyu.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.48ms)
+Completed 400 Bad Request in 245ms (Views: 0.8ms | ActiveRecord: 5.9ms | Allocations: 14433)
+
+
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:20:56 +0500
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input
+app/controllers/user_controller.rb:44: syntax error, unexpected `end', expecting end-of-input
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:21:47 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f1394470e60 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-ce2bf.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test11@gmail.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2943)
+
+
+  
+NameError (undefined local variable or method `user_params' for #<UserController:0x00000000021480>
+Did you mean?  user_path):
+  
+app/controllers/user_controller.rb:10:in `create'
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:21:49 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x000055b957c7fe28 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-sktbzg.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test11@gmail.com", "password"=>"[FILTERED]"}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2004)
+
+
+  
+NameError (undefined local variable or method `user_params' for #<UserController:0x00000000021520>
+Did you mean?  user_path):
+  
+app/controllers/user_controller.rb:10:in `create'
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:23:29 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f13a0092d28 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-do9h06.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::ErrorSerializer with ActiveModelSerializers::Adapter::JsonApi (0.8ms)
+Completed 400 Bad Request in 238ms (Views: 1.2ms | ActiveRecord: 5.5ms | Allocations: 12326)
+
+
+Started POST "/user?email=test11@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:23:53 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f139c07e778 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1y0cj29.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test11@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.45ms)
+Completed 422 Unprocessable Entity in 304ms (Views: 1.0ms | ActiveRecord: 6.1ms | Allocations: 12290)
+
+
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:24:26 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x000055b9573c0a58 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-7u087s.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.95ms)
+Completed 422 Unprocessable Entity in 282ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 2478)
+
+
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:24:44 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f13b40b5e40 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-lc24wc.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+Completed 500 Internal Server Error in 305ms (ActiveRecord: 6.2ms | Allocations: 13605)
+
+
+  
+NoMethodError (undefined method `errors' for #<UserController:0x000000000248b0>):
+  
+app/controllers/user_controller.rb:14:in `create'
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:24:51 +0500
+  
+SyntaxError (/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:14: syntax error, unexpected tLABEL
+...           render json: errors:{ user.errors }, status: :unp...
+...                        ^~~~~~~
+/home/ammarkhalid/rails-apis/first-api-1/app/controllers/user_controller.rb:14: syntax error, unexpected '}', expecting =>
+...er json: errors:{ user.errors }, status: :unprocessable_enti...
+...                              ^
+):
+  
+app/controllers/user_controller.rb:14: syntax error, unexpected tLABEL
+app/controllers/user_controller.rb:14: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:14: syntax error, unexpected tLABEL
+app/controllers/user_controller.rb:14: syntax error, unexpected '}', expecting =>
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:25:15 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f13b40b23d0 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-16ddzvx.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.86ms)
+Completed 200 OK in 2232ms (Views: 14.8ms | ActiveRecord: 38.0ms | Allocations: 12488)
+
+
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:25:37 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f139806a308 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-4vs8ev.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.55ms)
+Completed 200 OK in 238ms (Views: 1.0ms | ActiveRecord: 4.6ms | Allocations: 12418)
+
+
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:25:45 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f138c19beb8 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-v2wacx.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.6ms)
+Completed 200 OK in 238ms (Views: 1.0ms | ActiveRecord: 4.6ms | Allocations: 12450)
+
+
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:26:16 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f13981db9a8 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-wmji4t.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.29ms)
+Completed 200 OK in 266ms (Views: 2.0ms | ActiveRecord: 4.6ms | Allocations: 12434)
+
+
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:28:56 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x000055b957084628 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-jr039b.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.56ms)
+Completed 200 OK in 242ms (Views: 0.9ms | ActiveRecord: 4.5ms | Allocations: 12461)
+
+
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:30:07 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f139c22fb08 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1n722bs.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test2@gmail.com"], ["password_digest", "$2a$12$zrjjFj2S.d.f/KBSkkwbUOCp8q5afcdK1AvdcD2sq5icI6ZqjULO."], ["created_at", "2022-11-07 12:30:08.235781"], ["updated_at", "2022-11-07 12:30:08.235781"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 21], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 21], ["record_type", "User"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "qp2aqix8ppiptlk93ywxeme9epcp"], ["filename", "photo-1541363111435-5c1b7d867904.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 104908], ["checksum", "TIF65JBzN+IFRNniAU79yA=="], ["created_at", "2022-11-07 12:30:08.250935"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "User"], ["record_id", 21], ["blob_id", 15], ["created_at", "2022-11-07 12:30:08.256394"]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1 WHERE "users"."id" = $2[0m  [["updated_at", "2022-11-07 12:30:08.258133"], ["id", 21]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[36m  Disk Storage (0.5ms) [0m[32mUploaded file to key: qp2aqix8ppiptlk93ywxeme9epcp (checksum: TIF65JBzN+IFRNniAU79yA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 2b7bea32-3c20-420f-8d67-583c3e708a05) to Async(default) with arguments: #<GlobalID:0x00007f138c072c30 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/15>>
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 269ms (Views: 0.6ms | ActiveRecord: 13.2ms | Allocations: 22218)
+
+
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b7bea32-3c20-420f-8d67-583c3e708a05] Performing ActiveStorage::AnalyzeJob (Job ID: 2b7bea32-3c20-420f-8d67-583c3e708a05) from Async(default) enqueued at 2022-11-07T12:30:08Z with arguments: #<GlobalID:0x000055b9580e0d00 @uri=#<URI::GID gid://first-api/ActiveStorage::Blob/15>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b7bea32-3c20-420f-8d67-583c3e708a05] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: qp2aqix8ppiptlk93ywxeme9epcp[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b7bea32-3c20-420f-8d67-583c3e708a05] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b7bea32-3c20-420f-8d67-583c3e708a05]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b7bea32-3c20-420f-8d67-583c3e708a05]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 15]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b7bea32-3c20-420f-8d67-583c3e708a05]   [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2b7bea32-3c20-420f-8d67-583c3e708a05] Performed ActiveStorage::AnalyzeJob (Job ID: 2b7bea32-3c20-420f-8d67-583c3e708a05) from Async(default) in 10.57ms
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:31:32 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f138c0e4b28 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-zdnbjq.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.46ms)
+Completed 200 OK in 240ms (Views: 0.9ms | ActiveRecord: 4.0ms | Allocations: 12382)
+
+
+Started POST "/user?email=test2@gmail.com&password=[FILTERED]" for ::1 at 2022-11-07 17:34:13 +0500
+Processing by UserController#create as */*
+  Parameters: {"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f1398040238 @tempfile=#<Tempfile:/tmp/RackMultipart20221107-77182-1x27hfw.jpeg>, @original_filename="photo-1541363111435-5c1b7d867904.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"image\"; filename=\"photo-1541363111435-5c1b7d867904.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "email"=>"test2@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/user_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/user_controller.rb:11:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.5ms)
+Completed 200 OK in 239ms (Views: 1.1ms | ActiveRecord: 4.7ms | Allocations: 12319)
+
+
